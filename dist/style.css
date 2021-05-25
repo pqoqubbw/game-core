@@ -1,0 +1,24 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+.table-bordered {
+  border: 1px solid gray;
+}
+.cell {
+  border: 1px solid gray;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.cell:hover {
+  background-color: antiquewhite;
+}

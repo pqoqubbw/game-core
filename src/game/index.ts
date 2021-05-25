@@ -1,33 +1,26 @@
 abstract class Game {
+  abstract isValidate(): boolean;
+
   abstract checkWin(): boolean;
 
-  // eslint-disable-next-line class-methods-use-this
-  setMove(): void {
-    const tableEl = document.querySelector('.table-bordered') as HTMLElement;
-    const cells = tableEl?.querySelectorAll<HTMLElement>('.cell');
-    let currentSymbol = 'x';
+  abstract switchPlayer(): void;
 
-    function switchPlayer(): string {
-      if (currentSymbol === 'x') {
-        currentSymbol = 'o';
-      } else {
-        currentSymbol = 'x';
-      }
+  abstract handleClick(): void;
 
-      return currentSymbol;
-      //   return (currentSymbol = currentSymbol === 'x' ? 'o' : 'x');
-    }
-
-    function handleClick(this: HTMLElement): void {
-      if (this.textContent === 's') {
-        this.textContent = currentSymbol;
-      }
-      switchPlayer();
-    }
+  setHandleClick(): void {
+    const cells = document.querySelectorAll<HTMLElement>('.cell');
 
     cells?.forEach((cell) => {
-      cell.addEventListener('click', handleClick);
+      cell.addEventListener('click', this.handleClick);
     });
+  }
+
+  setValue(this: HTMLElement, currentSymbol: string): void {
+    if (this.textContent === '') {
+      this.textContent = currentSymbol;
+    } else {
+      alert('Ячейка занята');
+    }
   }
 }
 

@@ -4,25 +4,23 @@ class Field {
   constructor(
     public x: number,
     public y: number,
-    // eslint-disable-next-line @typescript-eslint/comma-dangle
-    public playersQuantity: number
+    public playersQuantity: number,
   ) {}
 
   private generateField(): HTMLTableElement {
     const tableEl = document.createElement('table');
-
     tableEl.className = 'table-bordered';
+
+    let counter = 0;
 
     for (let i = 0; i < this.x; i += 1) {
       const row = tableEl.insertRow();
       for (let j = 0; j < this.y; j += 1) {
-        const counter = 0;
         const cell = row.insertCell();
         cell.className = 'cell';
-        cell.id = `${counter + 1}`;
+        cell.id = `${(counter += 1)}`;
         cell.tabIndex = 1;
-        // eslint-disable-next-line @typescript-eslint/quotes
-        cell.innerHTML = `<div class="visually-hidden">s</div>`;
+        cell.innerHTML = '<div class="visually-hidden"></div>';
       }
     }
     return tableEl;

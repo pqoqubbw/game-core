@@ -5,17 +5,13 @@ interface IPlayer {
 }
 
 class Player {
-  constructor(
-    public name: string = 'Player',
-    // eslint-disable-next-line @typescript-eslint/comma-dangle
-    public id: string = `${new Date()}`
-  ) {}
+  constructor(public name: string = 'Player') { }
 
   createPlayer(): IPlayer {
     return {
       playerName: this.name,
       scores: 0,
-      id: this.id,
+      id: `${new Date()}`,
     };
   }
 
