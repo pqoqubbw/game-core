@@ -1,5 +1,8 @@
 declare abstract class Game {
-    abstract handleClick(): void;
+    abstract isValidate(): boolean;
+    abstract checkWin(): boolean;
+    abstract switchPlayer(): void;
+    abstract handleMove(): void;
     setHandleClick(): void;
     setValue(this: HTMLElement, currentSymbol: string): void;
 }

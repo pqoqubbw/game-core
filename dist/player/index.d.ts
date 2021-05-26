@@ -1,12 +1,11 @@
 interface IPlayer {
-    playerName: string;
-    scores: number;
-    id: string;
-}
-declare class Player {
     name: string;
-    constructor(name?: string);
-    createPlayer(): IPlayer;
+    scores: number;
+}
+declare class Player implements IPlayer {
+    name: string;
+    scores: number;
+    constructor(name: string, scores?: number);
     renderPlayer(): string;
 }
 export default Player;

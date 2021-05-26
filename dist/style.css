@@ -10,12 +10,18 @@
 }
 .table-bordered {
   border: 1px solid gray;
+  margin: auto;
+  margin-top: 10%;
 }
 .cell {
   border: 1px solid gray;
   width: 30px;
   height: 30px;
   cursor: pointer;
+  text-align: center;
+}
+
+.main {
   text-align: center;
 }
 

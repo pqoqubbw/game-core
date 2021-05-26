@@ -1,4 +1,9 @@
-declare class Field {
+interface IField {
+    x: number;
+    y: number;
+    playersQuantity: number;
+}
+declare class Field implements IField {
     x: number;
     y: number;
     playersQuantity: number;
