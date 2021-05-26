@@ -1,3 +1,11 @@
 // import Field from './field/index';
 
-// const game = new Field(9, 9, 3).initField();
+import TicTacToe from './ticTacToe/ticTacToe';
+import FieldView from './view/field';
+
+const game = new FieldView(9, 9).initField();
+
+const cells = document.querySelectorAll('.cell');
+
+const modal = new TicTacToe(cells).play('x');
+

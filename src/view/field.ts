@@ -19,14 +19,14 @@ class FieldView implements IField {
         cell.className = 'cell';
         cell.id = `${(counter += 1)}`;
         cell.tabIndex = 1;
-        cell.innerHTML = '<div class="visually-hidden"></div>';
+        cell.innerHTML = '<div class="visually-hidden">s</div>';
       }
     }
     return tableEl;
   }
 
   setValue(this: HTMLElement, currentSymbol: string): void {
-    if (this.textContent === '') {
+    if (this.textContent === 's') {
       this.textContent = currentSymbol;
     } else {
       alert('Ячейка занята');
