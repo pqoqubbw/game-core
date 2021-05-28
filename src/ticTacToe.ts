@@ -1,13 +1,13 @@
-import Game from './model/game';
+import Strategy from './model/Strategy';
 
-class TicTacToe extends Game {
-  constructor(
-    public cells: NodeListOf<Element>,
-  ) {
-    super(['X', 'O']);
+import { IPlayer } from './player';
+
+class TicTacToe extends Strategy {
+  constructor(public players: Array<IPlayer>) {
+    super(players);
   }
 
-  checkWin(): void {
+  checkWin(cells: NodeListOf<Element>): void {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -19,22 +19,18 @@ class TicTacToe extends Game {
       [2, 4, 6],
     ];
 
-    const victory = lines.some((l) => this.cells[l[0]].textContent
-        && this.cells[l[0]].textContent === this.cells[l[1]].textContent
-        && this.cells[l[1]].textContent === this.cells[l[2]].textContent);
+    const victory = lines.some((l) => cells[l[0]].textContent
+      && cells[l[0]].textContent === cells[l[1]].textContent
+      && cells[l[1]].textContent === cells[l[2]].textContent);
 
-    if (!victory && this.checkDraw(this.cells)) {
-      // eslint-disable-next-line no-alert
+    if (!victory) {
       alert('it is a draw');
     }
 
     if (victory) {
-      // eslint-disable-next-line no-alert
       alert(`${this.currentPlayer} win!`);
       this.finished = true;
     }
-
-    if (this.finished) this.restartGame(this.cells);
   }
 }
 
