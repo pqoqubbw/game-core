@@ -1,7 +1,7 @@
 import TicTacToe from '../ticTacToe';
-import FieldView from '../view/field';
+import FieldView from '../view/FieldView';
 
-import { IField } from '../field';
+import { IField } from '../Field';
 import { IPlayer } from '../player';
 
 class Game {
