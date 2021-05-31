@@ -22,5 +22,5 @@ export interface IFieldProps {
     size: IFieldViewProps;
 }
 export interface IEventProps {
-    listeners: [];
+    listeners: string[];
 }

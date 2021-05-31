@@ -2,18 +2,18 @@ import { IEventProps } from './@types/types';
 
 class Event implements IEventProps {
   constructor(
-    public listeners: any = [],
+    public listeners = [] as any,
   ) { }
 
-  addListener(listener: any): void {
+  addListener(listener: () => void): void {
     this.listeners.push(listener);
   }
 
-  trigger(params: any): void {
-    this.listeners.forEach(
-      (listener: (params: any) => void) => listener(params),
-    );
-  }
+  // trigger(params: any): void {
+  //   this.listeners.forEach(
+  //     (listener: (params: any) => void) => listener(params),
+  //   );
+  // }
 
   triggerTwo(param1: number, param2: number): void {
     this.listeners.forEach(

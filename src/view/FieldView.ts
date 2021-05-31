@@ -6,12 +6,11 @@ class FieldView implements IFieldViewProps {
   constructor(
     public x: number,
     public y: number,
-    public board: Element[][] = [],
+    public board = [] as HTMLElement[][],
     public playEvent = new Event(),
-    public updateCellEvent = new Event(),
   ) { }
 
-  private generateField(): HTMLTableElement {
+  private generateField(): HTMLElement {
     const tableEl = document.createElement('table');
     tableEl.className = 'table-bordered';
 
@@ -44,7 +43,7 @@ class FieldView implements IFieldViewProps {
   }
 
   resetField(): void {
-    this.board.forEach((el: any): void => {
+    this.board.forEach((el: any) => {
       const td = el;
       td.textContent = '';
     });

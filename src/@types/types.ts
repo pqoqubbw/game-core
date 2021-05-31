@@ -29,5 +29,5 @@ export interface IFieldProps {
 }
 
 export interface IEventProps {
-  listeners: [],
+  listeners: string[],
 }

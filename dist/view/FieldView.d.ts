@@ -3,10 +3,9 @@ import Event from '../Event';
 declare class FieldView implements IFieldViewProps {
     x: number;
     y: number;
-    board: Element[][];
+    board: HTMLElement[][];
     playEvent: Event;
-    updateCellEvent: Event;
-    constructor(x: number, y: number, board?: Element[][], playEvent?: Event, updateCellEvent?: Event);
+    constructor(x: number, y: number, board?: HTMLElement[][], playEvent?: Event);
     private generateField;
     updateCell: (x: number, y: number, sign: string) => void;
     renderField(): void;
