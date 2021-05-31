@@ -8,7 +8,6 @@ declare class FieldView {
     constructor(x: number, y: number, board?: any[][], playEvent?: Event, updateCellEvent?: Event);
     private generateField;
     updateCell: (x: number, y: number, sign: string) => void;
-    k: any;
     renderField(): void;
     resetField(): void;
 }

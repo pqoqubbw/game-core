@@ -5,11 +5,11 @@ import TicTacToe from './model1/TickTacToe';
 // import FourInTheRow from './model1/FourInTheRow';
 
 const game = new Game(
-  [new Player('Ata', 'X'), new Player('DZ', 'Y'), new Player('Denis', 'D')],
+  [new Player('player One', 'X'), new Player('player Two', 'O')],
   new TicTacToe(),
-  new Field({ x: 4, y: 4 }),
+  new Field({ x: 3, y: 3 }),
 );
 
 game.init();
 
-console.log(game);
+// console.log(game);

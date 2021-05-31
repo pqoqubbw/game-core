@@ -1,11 +1,5 @@
 class Player {
-  name: string;
-
-  sign: string;
-
-  constructor(name: string, sign: string) {
-    this.name = name;
-    this.sign = sign;
-  }
+  constructor(public name: string, public sign: string) { }
 }
+
 export default Player;

@@ -4,7 +4,7 @@ class FieldView {
   constructor(
     public x: number,
     public y: number,
-    public board: any [][] = [],
+    public board: HTMLElement[][] = [],
     public playEvent = new Event(),
     public updateCellEvent = new Event(),
   ) { }
@@ -24,7 +24,6 @@ class FieldView {
         cell.id = `${(counter += 1)}`;
         cell.tabIndex = 1;
         cell.addEventListener('click', () => {
-          console.log(`generate${i}${j}`);
           this.playEvent.triggerTwo(i, j);
         });
       }
@@ -33,9 +32,8 @@ class FieldView {
   }
 
   updateCell = (x: number, y: number, sign: string): void => {
-    console.log('updateCell' + 'x' + ' ' + 'y');
     this.board[x][y].innerHTML = sign;
-  };k
+  };
 
   renderField(): void {
     const mainElem = document.querySelector('.main');
@@ -43,12 +41,8 @@ class FieldView {
     mainElem?.append(field);
   }
 
-  // clickFieldEl(action): void {
-  //   this.board.forEach((el: any): void => el.addEventListener('click', (e) => action(e)));
-  // }
-
   resetField(): void {
-    this.board.forEach((el: any): void => {
+    this.board.forEach((el: HTMLElement): void => {
       const td = el;
       td.textContent = '';
     });

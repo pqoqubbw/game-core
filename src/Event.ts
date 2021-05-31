@@ -1,20 +1,20 @@
 class Event {
-  listeners: [];
-
-  constructor() {
-    this.listeners = [];
-  }
+  constructor(
+    public listeners: any[] = [],
+  ) { }
 
   addListener(listener: any): void {
     this.listeners.push(listener);
   }
 
   trigger(params: any): void {
-    this.listeners.forEach((listener) => listener(params));
+    this.listeners.forEach((listener: (params: any) => void) => listener(params));
   }
 
-  triggerTwo(param1: any, param2: any): void {
-    this.listeners.forEach((listener) => listener(param1, param2));
+  triggerTwo(param1: number, param2: number): void {
+    this.listeners.forEach(
+      (listener: (param1: number, param2: number) => void) => listener(param1, param2),
+    );
   }
 }
 

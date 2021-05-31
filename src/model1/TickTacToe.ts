@@ -1,7 +1,7 @@
 import Strategy from './Strategy';
 
 class TicTacToe extends Strategy {
-  getName = () :string => 'TicTacToe';
+  getName = (): string => 'TicTacToe';
 
   checkWin = (board: number[][]) : number => {
     const size = board.length;

@@ -1,15 +1,20 @@
 abstract class Strategy {
-  init = (x: number, y: number): number[][] => Array(x).fill(Array(y).fill(0));
+  init = (x: number, y: number): number[][] => {
+    const result = [];
+    for (let i = 0; i < x; i += 1) {
+      result.push(new Array(y).fill(null));
+    }
+    return result;
+  };
 
   isTurnValid = (board: number[][], x: number, y: number): boolean => {
     const value = board[x][y];
-    return value === 0;
+    return value === null;
   };
 
   setValue = (board: number[][], x: number, y: number, playerId: number): void => {
-    const line = board[x];
-    line[y] = playerId;
-    console.log(`setValue ${board}`);
+    const playerValue = board;
+    playerValue[x][y] = playerId;
   };
 
   abstract getName(): string;
