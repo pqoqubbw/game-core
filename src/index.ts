@@ -2,7 +2,6 @@ import Field from './Field';
 import Game from './controller1/Game';
 import Player from './model1/Player';
 import TicTacToe from './model1/TickTacToe';
-// import FourInTheRow from './model1/FourInTheRow';
 
 const game = new Game(
   [new Player('player One', 'X'), new Player('player Two', 'O')],
@@ -10,6 +9,6 @@ const game = new Game(
   new Field({ x: 3, y: 3 }),
 );
 
-game.init();
+// const view = new HTMLGameView(game);
 
-// console.log(game);
+game.init();

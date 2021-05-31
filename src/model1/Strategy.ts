@@ -14,7 +14,7 @@ abstract class Strategy {
 
   setValue = (board: number[][], x: number, y: number, playerId: number): void => {
     const playerValue = board;
-    playerValue[x][y] = playerId;
+    playerValue[x][y] = playerId + 1;
   };
 
   abstract getName(): string;

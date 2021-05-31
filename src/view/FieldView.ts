@@ -4,7 +4,7 @@ class FieldView {
   constructor(
     public x: number,
     public y: number,
-    public board: HTMLElement[][] = [],
+    public board: HTMLTableDataCellElement[][] = [],
     public playEvent = new Event(),
     public updateCellEvent = new Event(),
   ) { }
@@ -42,7 +42,7 @@ class FieldView {
   }
 
   resetField(): void {
-    this.board.forEach((el: HTMLElement): void => {
+    this.board.forEach((el: any): void => {
       const td = el;
       td.textContent = '';
     });

@@ -1,8 +1,8 @@
 declare class Event {
-    listeners: [];
-    constructor();
+    listeners: any[];
+    constructor(listeners?: any[]);
     addListener(listener: any): void;
     trigger(params: any): void;
-    triggerTwo(param1: any, param2: any): void;
+    triggerTwo(param1: number, param2: number): void;
 }
 export default Event;

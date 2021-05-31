@@ -27,11 +27,14 @@ class Game {
     const isValid = this.strategy.isTurnValid(this.board, x, y);
 
     if (isValid) {
-      this.strategy.setValue(this.board, x, y, this.currentPlayerIndex);
+      if (!this.isFinished) {
+        this.strategy.setValue(this.board, x, y, this.currentPlayerIndex);
+        this.view.updateCell(x, y, this.players[this.currentPlayerIndex].sign);
+      }
+
       const winnerId = this.strategy.checkWin(this.board);
 
       if (winnerId < 0) {
-        this.view.updateCell(x, y, this.players[this.currentPlayerIndex].sign);
         this.updateTurnAndNextPlayer();
       } else {
         this.winnerId = this.currentPlayerIndex;

@@ -7,14 +7,14 @@ declare class Game {
     players: Player[];
     strategy: Strategy;
     field: Field;
-    view?: FieldView;
     board: number[][];
-    currentPlayerIndex: number;
+    view: FieldView;
     turn: number;
+    currentPlayerIndex: number;
     isFinished: boolean;
-    winnedId: number;
+    winnerId: number;
     updateCellEvent: Event;
-    constructor(players: Player[], strategy: Strategy, field: Field);
+    constructor(players: Player[], strategy: Strategy, field: Field, board?: number[][], view?: FieldView, turn?: number, currentPlayerIndex?: number, isFinished?: boolean, winnerId?: number, updateCellEvent?: Event);
     init(): void;
     makeMove(x: number, y: number): void;
     updateTurnAndNextPlayer(): void;
