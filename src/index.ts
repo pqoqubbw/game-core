@@ -1,7 +1,8 @@
 import Field from './Field';
-import Game from './controller1/Game';
-import Player from './model1/Player';
-import TicTacToe from './model1/TickTacToe';
+import Game from './controller/Game';
+import Player from './model/Player';
+import TicTacToe from './model/TickTacToe';
+import HTMLGameView from './view/HTMLGameView';
 
 const game = new Game(
   [new Player('player One', 'X'), new Player('player Two', 'O')],
@@ -9,6 +10,5 @@ const game = new Game(
   new Field({ x: 3, y: 3 }),
 );
 
-// const view = new HTMLGameView(game);
-
-game.init();
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const view = new HTMLGameView(game);

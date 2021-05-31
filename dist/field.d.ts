@@ -1,10 +1,5 @@
-export interface IField {
-    size: {
-        x: number;
-        y: number;
-    };
-}
-export default class Field implements IField {
+import { IFieldProps } from './@types/types';
+export default class Field implements IFieldProps {
     size: {
         x: number;
         y: number;

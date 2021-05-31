@@ -22,7 +22,7 @@ class TicTacToe extends Strategy {
       && cells[l[1]] === cells[l[2]]);
 
     if (victory) {
-      alert('win');
+      // alert('win');
       return 1;
     }
 

@@ -1,11 +1,12 @@
+import { IFieldViewProps } from '../@types/types';
 import Event from '../Event';
-declare class FieldView {
+declare class FieldView implements IFieldViewProps {
     x: number;
     y: number;
-    board: HTMLTableDataCellElement[][];
+    board: Element[][];
     playEvent: Event;
     updateCellEvent: Event;
-    constructor(x: number, y: number, board?: HTMLTableDataCellElement[][], playEvent?: Event, updateCellEvent?: Event);
+    constructor(x: number, y: number, board?: Element[][], playEvent?: Event, updateCellEvent?: Event);
     private generateField;
     updateCell: (x: number, y: number, sign: string) => void;
     renderField(): void;

@@ -1,10 +1,12 @@
+import { IFieldViewProps } from '../@types/types';
+
 import Event from '../Event';
 
-class FieldView {
+class FieldView implements IFieldViewProps {
   constructor(
     public x: number,
     public y: number,
-    public board: HTMLTableDataCellElement[][] = [],
+    public board: Element[][] = [],
     public playEvent = new Event(),
     public updateCellEvent = new Event(),
   ) { }

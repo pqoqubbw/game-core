@@ -1,4 +1,6 @@
-class PlayerView {
+import { IPlayerViewProps } from '../@types/types';
+
+class PlayerView implements IPlayerViewProps {
   constructor(public name: string[]) { }
 
   renderPlayer(): void {
