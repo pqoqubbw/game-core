@@ -1,13 +1,14 @@
-import { IFieldViewProps } from '../@types/types';
+// import { IFieldViewProps } from '../@types/types';
 
 import Event from '../Event';
 
-class FieldView implements IFieldViewProps {
+class FieldView {
   constructor(
     public x: number,
     public y: number,
     public board = [] as HTMLElement[][],
     public playEvent = new Event(),
+    public message = document.createElement('h2'),
   ) { }
 
   private generateField(): HTMLElement {
@@ -25,28 +26,36 @@ class FieldView implements IFieldViewProps {
         cell.id = `${(counter += 1)}`;
         cell.tabIndex = 1;
         cell.addEventListener('click', () => {
-          this.playEvent.triggerTwo(i, j);
+          this.playEvent.trigger({ x: i, y: j });
         });
       }
     }
     return tableEl;
   }
 
-  updateCell = (x: number, y: number, sign: string): void => {
-    this.board[x][y].innerHTML = sign;
+  updateCell = (data: any): void => {
+    this.board[data.x][data.y].innerHTML = data.sign;
   };
 
-  renderField(): void {
-    const mainElem = document.querySelector('.main');
+  renderField(idElement: string): void {
+    const mainElem = document.querySelector(idElement);
     const field = this.generateField();
     mainElem?.append(field);
+    mainElem?.append(this.message);
   }
 
   resetField(): void {
-    this.board.forEach((el: any) => {
-      const td = el;
-      td.textContent = '';
+    this.board.forEach((el) => {
+      el.forEach((item) => {
+        const currentItem = item;
+        currentItem.textContent = '';
+      });
     });
+  }
+
+  showWin(winner: string): void {
+    this.message.innerHTML = `${winner} win`;
+    this.resetField();
   }
 }
 

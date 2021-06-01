@@ -21,13 +21,15 @@ class TicTacToe extends Strategy {
       && cells[l[0]] === cells[l[1]]
       && cells[l[1]] === cells[l[2]]);
 
-    if (victory) {
-      // alert('win');
-      return 1;
-    }
+    if (victory) return 1;
 
     return -1;
   };
+
+  // setSymbolPlayer = (players: any): any => {
+  //   const symbols = ['X', 'O'];
+  //   return players.map((el: string, i: number): any => el = { name: el, sign: symbols[i] });
+  // };
 }
 
 export default TicTacToe;

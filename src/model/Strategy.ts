@@ -1,4 +1,10 @@
 abstract class Strategy {
+  abstract getName(): string;
+
+  abstract checkWin(board: number[][]): number;
+
+  // abstract setSymbolPlayer(players: any): Array<any>;
+
   init = (x: number, y: number): number[][] => {
     const result = [];
     for (let i = 0; i < x; i += 1) {
@@ -17,9 +23,10 @@ abstract class Strategy {
     playerValue[x][y] = playerId + 1;
   };
 
-  abstract getName(): string;
-
-  abstract checkWin(board: number[][]): number;
+  checkDraw = (board: number[][]): boolean => {
+    const draw = board.slice().flat().every((cell: number | null): boolean => cell !== null);
+    return draw;
+  };
 }
 
 export default Strategy;

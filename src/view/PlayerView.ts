@@ -1,12 +1,10 @@
-import { IPlayerViewProps } from '../@types/types';
+// import { IPlayerViewProps } from '../@types/types';
 
-class PlayerView implements IPlayerViewProps {
-  constructor(public name: string[]) { }
-
-  renderPlayer(): void {
+class PlayerView {
+  renderPlayer = (players: any): void => {
     const playerBlock = document.querySelector('.main');
-    this.name.forEach((itemName: string, index: number): void => playerBlock?.insertAdjacentHTML('beforeend', `<h3 class="player-name">Player ${index + 1}: ${itemName}</h3></div>`));
-  }
+    players.forEach((itemName: string, index: number): void => playerBlock?.insertAdjacentHTML('beforeend', `<h3 class="player-name">Player ${index + 1}: ${itemName}</h3></div>`));
+  };
 }
 
 export default PlayerView;
