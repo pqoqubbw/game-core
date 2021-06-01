@@ -1,5 +1,7 @@
 import Strategy from './Strategy';
 
+import { IPlayersInfo } from '../@types/types';
+
 class TicTacToe extends Strategy {
   getName = (): string => 'TicTacToe';
 
@@ -26,10 +28,16 @@ class TicTacToe extends Strategy {
     return -1;
   };
 
-  // setSymbolPlayer = (players: any): any => {
-  //   const symbols = ['X', 'O'];
-  //   return players.map((el: string, i: number): any => el = { name: el, sign: symbols[i] });
-  // };
+  setSymbolPlayer = (players: string[]): IPlayersInfo[] => {
+    const symbols = ['X', 'O'];
+    return players.slice().map(
+      (player: string | IPlayersInfo, i: number): IPlayersInfo => {
+        let currentPlayer = player;
+        currentPlayer = { name: player, sign: symbols[i] } as IPlayersInfo;
+        return currentPlayer;
+      },
+    );
+  };
 }
 
 export default TicTacToe;

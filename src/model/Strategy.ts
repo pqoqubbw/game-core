@@ -1,9 +1,11 @@
-abstract class Strategy {
+import { IPlayersInfo, IStrategy } from '../@types/types';
+
+abstract class Strategy implements IStrategy {
   abstract getName(): string;
 
   abstract checkWin(board: number[][]): number;
 
-  // abstract setSymbolPlayer(players: any): Array<any>;
+  abstract setSymbolPlayer(players: string[]): IPlayersInfo[];
 
   init = (x: number, y: number): number[][] => {
     const result = [];
@@ -24,7 +26,7 @@ abstract class Strategy {
   };
 
   checkDraw = (board: number[][]): boolean => {
-    const draw = board.slice().flat().every((cell: number | null): boolean => cell !== null);
+    const draw = board.slice().flat().every((cell: number): boolean => cell !== null);
     return draw;
   };
 }
