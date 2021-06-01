@@ -1,10 +1,11 @@
-import Strategy from './Strategy';
 import Event from '../Event';
-import { IGameProps, PlayerProps } from '../@types/types';
+import { IFieldProps, IFieldViewProps, IGameProps, IPlayersInfo, IStrategy, PlayerProps } from '../@types/types';
 declare class Game implements IGameProps {
-    players: PlayerProps;
-    strategy: Strategy;
-    field: any;
+    playersArr: PlayerProps;
+    strategy: IStrategy;
+    fieldParam: IFieldViewProps;
+    field: IFieldProps;
+    players: IPlayersInfo[];
     board: number[][];
     turn: number;
     currentPlayerIndex: number;
@@ -12,7 +13,7 @@ declare class Game implements IGameProps {
     winnerId: number;
     updateCellEvent: Event;
     winEvent: Event;
-    constructor(players: PlayerProps, strategy: Strategy, field: any, board?: number[][], turn?: number, currentPlayerIndex?: number, isFinished?: boolean, winnerId?: number, updateCellEvent?: Event, winEvent?: Event);
+    constructor(playersArr: PlayerProps, strategy: IStrategy, fieldParam: IFieldViewProps, field?: IFieldProps, players?: IPlayersInfo[], board?: number[][], turn?: number, currentPlayerIndex?: number, isFinished?: boolean, winnerId?: number, updateCellEvent?: Event, winEvent?: Event);
     makeMove(data: any): void;
     updateTurnAndNextPlayer(): void;
     clearBoard(): void;

@@ -1,8 +1,8 @@
-// import { IFieldViewProps } from '../@types/types';
+import { IFieldViewProps } from '../@types/types';
 
 import Event from '../Event';
 
-class FieldView {
+class FieldView implements IFieldViewProps {
   constructor(
     public x: number,
     public y: number,

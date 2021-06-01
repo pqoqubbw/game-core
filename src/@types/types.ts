@@ -1,31 +1,47 @@
-import Strategy from '../model/Strategy';
-
 export interface IGameProps {
-  players: PlayerProps,
-  strategy: Strategy,
-  field: IFieldProps,
+  playersArr: PlayerProps,
+  strategy: IStrategy,
+  fieldParam: IFieldViewProps,
+}
+
+export interface IStrategy {
+  getName(): string,
+  checkWin(board: number[][]): number,
+  setSymbolPlayer(players: string[]): IPlayersInfo[],
+  init(x: number, y: number): number[][],
+  isTurnValid(board: number[][], x: number, y: number): boolean,
+  setValue(board: number[][], x: number, y: number, playerId: number): void,
+  checkDraw(board: number[][]): boolean,
 }
 
 export interface IHTMLGameViewProps {
   game: IGameProps,
 }
 
-export type PlayerProps = Array<string>;
+export type PlayerProps = string[];
 
 export interface IPlayerViewProps {
   name: string[],
 }
 
+export interface IPlayersInfo {
+  name: string,
+  sign: string,
+}
+
+export interface IPlayerProps {
+  name: string,
+}
+
 export interface IFieldViewProps {
-  [key: string]: number,
+  x: number,
+  y: number,
 }
 
 export interface IFieldProps {
-  size: {
-    [key: string]: number
-  },
+  size: IFieldViewProps,
 }
 
 export interface IEventProps {
-  listeners: string[],
+  listeners: Array<(param: string) => void>,
 }

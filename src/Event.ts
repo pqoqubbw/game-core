@@ -2,7 +2,7 @@ import { IEventProps } from './@types/types';
 
 class Event implements IEventProps {
   constructor(
-    public listeners = [] as any,
+    public listeners: Array<(param: string) => void> = [],
   ) { }
 
   addListener(listener: (param: string) => void): void {

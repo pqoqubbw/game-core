@@ -1,4 +1,5 @@
+import { IPlayersInfo } from '../@types/types';
 declare class PlayerView {
-    renderPlayer: (players: any) => void;
+    renderPlayer: (players: IPlayersInfo[]) => void;
 }
 export default PlayerView;

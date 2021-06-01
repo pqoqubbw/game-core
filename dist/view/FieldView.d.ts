@@ -1,5 +1,6 @@
+import { IFieldViewProps } from '../@types/types';
 import Event from '../Event';
-declare class FieldView {
+declare class FieldView implements IFieldViewProps {
     x: number;
     y: number;
     board: HTMLElement[][];

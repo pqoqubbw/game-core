@@ -1,6 +1,6 @@
-// import { IPlayerProps } from '../@types/types';
+import { IPlayerProps } from '../@types/types';
 
-class Player {
+class Player implements IPlayerProps {
   constructor(public name: string) { }
 }
 
