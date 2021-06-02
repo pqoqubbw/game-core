@@ -1,9 +1,9 @@
-import Field from './Field';
-import Observer from '../utils/Observer';
-
 import {
   IFieldProps, IFieldViewProps, IGameInfo, IGameProps, IPlayersInfo,
 } from '../@types/types';
+
+import Field from './Field';
+import Observer from '../utils/Observer';
 
 class Game implements IGameProps {
   constructor(
@@ -24,7 +24,7 @@ class Game implements IGameProps {
 
   makeMove({ x, y }: IFieldViewProps): void {
     console.log(this);
-    
+
     const isValid = this.gameInfo.strategy.isTurnValid(this.board, x, y);
 
     if (!isValid) {

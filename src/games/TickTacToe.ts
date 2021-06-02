@@ -1,6 +1,6 @@
-import Strategy from './Strategy';
-
 import { IPlayersInfo } from '../@types/types';
+
+import Strategy from './Strategy';
 
 class TicTacToe extends Strategy {
   getName = (): string => 'TicTacToe';

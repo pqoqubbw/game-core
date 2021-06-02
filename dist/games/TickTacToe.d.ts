@@ -1,5 +1,5 @@
-import Strategy from './Strategy';
 import { IPlayersInfo } from '../@types/types';
+import Strategy from './Strategy';
 declare class TicTacToe extends Strategy {
     getName: () => string;
     checkWin: (board: number[][]) => boolean;

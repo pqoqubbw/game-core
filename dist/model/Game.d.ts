@@ -1,5 +1,5 @@
-import Observer from '../utils/Observer';
 import { IFieldProps, IFieldViewProps, IGameInfo, IGameProps, IPlayersInfo } from '../@types/types';
+import Observer from '../utils/Observer';
 declare class Game implements IGameProps {
     gameInfo: IGameInfo;
     field: IFieldProps;

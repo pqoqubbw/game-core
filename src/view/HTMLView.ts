@@ -17,8 +17,8 @@ class HTMLView {
   }
 
   render(idElement: string): void {
-    this.view.renderField(idElement);
-    this.players.renderPlayer(this.game.players);
+    this.view.renderField(idElement, 'table-bordered');
+    this.players.renderPlayer(this.game.players, '.main');
   }
 }
 export default HTMLView;

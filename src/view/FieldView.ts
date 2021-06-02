@@ -11,9 +11,9 @@ class FieldView {
     private resultMessage = document.createElement('h2'),
   ) { }
 
-  private generateField(): HTMLElement {
+  private generateField(classTable: string): HTMLElement {
     const tableEl = document.createElement('table');
-    tableEl.className = 'table-bordered';
+    tableEl.className = classTable;
 
     for (let i = 0, counter = 0; i < this.x; i += 1) {
       const row = tableEl.insertRow();
@@ -36,9 +36,9 @@ class FieldView {
     this.board[x][y].innerHTML = sign;
   };
 
-  renderField(idElement: string): void {
+  renderField(idElement: string, classTable: string): void {
     const mainElem = document.querySelector(idElement);
-    const field = this.generateField();
+    const field = this.generateField(classTable);
     mainElem?.append(field);
     mainElem?.append(this.resultMessage);
   }
