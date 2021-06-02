@@ -1,4 +1,4 @@
-import { IEventProps } from './@types/types';
+import { IEventProps } from '../@types/types';
 declare class Event implements IEventProps {
     listeners: Array<(param: string) => void>;
     constructor(listeners?: Array<(param: string) => void>);

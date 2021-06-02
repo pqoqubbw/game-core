@@ -1,6 +1,6 @@
 import { IFieldViewProps } from '../@types/types';
 
-import Event from '../Event';
+import Event from '../utils/Event';
 
 class FieldView implements IFieldViewProps {
   constructor(
@@ -8,7 +8,7 @@ class FieldView implements IFieldViewProps {
     public y: number,
     public board = [] as HTMLElement[][],
     public playEvent = new Event(),
-    public message = document.createElement('h2'),
+    public resultMessage = document.createElement('h2'),
   ) { }
 
   private generateField(): HTMLElement {
@@ -41,10 +41,10 @@ class FieldView implements IFieldViewProps {
     const mainElem = document.querySelector(idElement);
     const field = this.generateField();
     mainElem?.append(field);
-    mainElem?.append(this.message);
+    mainElem?.append(this.resultMessage);
   }
 
-  resetField(): void {
+  clearField(): void {
     this.board.forEach((el) => {
       el.forEach((item) => {
         const currentItem = item;
@@ -54,8 +54,8 @@ class FieldView implements IFieldViewProps {
   }
 
   showWin(winner: string): void {
-    this.message.innerHTML = `${winner} win`;
-    this.resetField();
+    this.resultMessage.innerHTML = `${winner} win`;
+    this.clearField();
   }
 }
 

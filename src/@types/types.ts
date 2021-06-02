@@ -1,13 +1,13 @@
 export interface IGameProps {
-  playersArr: PlayerProps,
+  playersList: PlayerProps,
   strategy: IStrategy,
-  fieldParam: IFieldViewProps,
+  fieldSize: IFieldViewProps,
 }
 
 export interface IStrategy {
   getName(): string,
   checkWin(board: number[][]): number,
-  setSymbolPlayer(players: string[]): IPlayersInfo[],
+  setPlayerToken(players: string[]): IPlayersInfo[],
   init(x: number, y: number): number[][],
   isTurnValid(board: number[][], x: number, y: number): boolean,
   setValue(board: number[][], x: number, y: number, playerId: number): void,

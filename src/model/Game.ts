@@ -1,5 +1,5 @@
-import Field from '../Field';
-import Event from '../Event';
+import Field from './Field';
+import Event from '../utils/Event';
 
 import {
   IFieldProps, IFieldViewProps, IGameProps, IPlayersInfo, IStrategy, PlayerProps,
@@ -7,9 +7,9 @@ import {
 
 class Game implements IGameProps {
   constructor(
-    public playersArr: PlayerProps,
+    public playersList: PlayerProps,
     public strategy: IStrategy,
-    public fieldParam: IFieldViewProps,
+    public fieldSize: IFieldViewProps,
     public field: IFieldProps = { size: { x: 1, y: 1 } },
     public players: IPlayersInfo[] = [],
     public board: number[][] = [],
@@ -20,8 +20,8 @@ class Game implements IGameProps {
     public updateCellEvent = new Event(),
     public winEvent = new Event(),
   ) {
-    this.players = this.strategy.setSymbolPlayer(playersArr);
-    this.field = new Field(this.fieldParam);
+    this.players = this.strategy.setPlayerToken(playersList);
+    this.field = new Field(this.fieldSize);
     this.board = this.strategy.init(this.field.size.x, this.field.size.y);
   }
 

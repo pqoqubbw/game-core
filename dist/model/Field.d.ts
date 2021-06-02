@@ -1,4 +1,4 @@
-import { IFieldProps } from './@types/types';
+import { IFieldProps } from '../@types/types';
 export default class Field implements IFieldProps {
     size: {
         x: number;

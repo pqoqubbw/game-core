@@ -1,6 +1,6 @@
 import HTMLView from './view/HTMLView';
 import Game from './model/Game';
-import TicTacToe from './model/TickTacToe';
+import TicTacToe from './games/TickTacToe';
 
 const game = new Game(
   ['player One', 'player Two'],

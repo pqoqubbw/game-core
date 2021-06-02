@@ -1,4 +1,4 @@
-import { IEventProps } from './@types/types';
+import { IEventProps } from '../@types/types';
 
 class Event implements IEventProps {
   constructor(

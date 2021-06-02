@@ -5,7 +5,7 @@ abstract class Strategy implements IStrategy {
 
   abstract checkWin(board: number[][]): number;
 
-  abstract setSymbolPlayer(players: string[]): IPlayersInfo[];
+  abstract setPlayerToken(players: string[]): IPlayersInfo[];
 
   init = (x: number, y: number): number[][] => {
     const result = [];
