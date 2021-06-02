@@ -1,12 +1,20 @@
 export interface IGameProps {
+  gameInfo: {
+    playersList: PlayerProps,
+    strategy: IStrategy,
+    fieldSize: IFieldViewProps
+  },
+}
+
+export interface IGameInfo {
   playersList: PlayerProps,
   strategy: IStrategy,
-  fieldSize: IFieldViewProps,
+  fieldSize: IFieldViewProps
 }
 
 export interface IStrategy {
   getName(): string,
-  checkWin(board: number[][]): number,
+  checkWin(board: number[][]): boolean,
   setPlayerToken(players: string[]): IPlayersInfo[],
   init(x: number, y: number): number[][],
   isTurnValid(board: number[][], x: number, y: number): boolean,
@@ -38,10 +46,13 @@ export interface IFieldViewProps {
   y: number,
 }
 
+export interface IUpdateData {
+  x: number,
+  y: number,
+  sign: string
+}
+
 export interface IFieldProps {
   size: IFieldViewProps,
 }
 
-export interface IEventProps {
-  listeners: Array<(param: string) => void>,
-}

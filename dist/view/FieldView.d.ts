@@ -1,14 +1,13 @@
-import { IFieldViewProps } from '../@types/types';
-import Event from '../utils/Event';
-declare class FieldView implements IFieldViewProps {
-    x: number;
-    y: number;
-    board: HTMLElement[][];
-    playEvent: Event;
-    resultMessage: HTMLHeadingElement;
-    constructor(x: number, y: number, board?: HTMLElement[][], playEvent?: Event, resultMessage?: HTMLHeadingElement);
+import Observer from '../utils/Observer';
+declare class FieldView {
+    private x;
+    private y;
+    private board;
+    playEvent: Observer;
+    private resultMessage;
+    constructor(x: number, y: number, board?: HTMLElement[][], playEvent?: Observer, resultMessage?: HTMLHeadingElement);
     private generateField;
-    updateCell: (data: any) => void;
+    updateCell: ({ x, y, sign }: any) => void;
     renderField(idElement: string): void;
     clearField(): void;
     showWin(winner: string): void;

@@ -1,22 +1,21 @@
-import { IFieldViewProps } from '../@types/types';
+import { IUpdateData } from '../@types/types';
 
-import Event from '../utils/Event';
+import Observer from '../utils/Observer';
 
-class FieldView implements IFieldViewProps {
+class FieldView {
   constructor(
-    public x: number,
-    public y: number,
-    public board = [] as HTMLElement[][],
-    public playEvent = new Event(),
-    public resultMessage = document.createElement('h2'),
+    private x: number,
+    private y: number,
+    private board = [] as HTMLElement[][],
+    public playEvent = new Observer(),
+    private resultMessage = document.createElement('h2'),
   ) { }
 
   private generateField(): HTMLElement {
     const tableEl = document.createElement('table');
     tableEl.className = 'table-bordered';
 
-    let counter = 0;
-    for (let i = 0; i < this.x; i += 1) {
+    for (let i = 0, counter = 0; i < this.x; i += 1) {
       const row = tableEl.insertRow();
       this.board[i] = [];
       for (let j = 0; j < this.y; j += 1) {
@@ -33,8 +32,8 @@ class FieldView implements IFieldViewProps {
     return tableEl;
   }
 
-  updateCell = (data: any): void => {
-    this.board[data.x][data.y].innerHTML = data.sign;
+  updateCell = ({ x, y, sign }: IUpdateData): void => {
+    this.board[x][y].innerHTML = sign;
   };
 
   renderField(idElement: string): void {

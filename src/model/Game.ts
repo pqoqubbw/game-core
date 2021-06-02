@@ -1,50 +1,52 @@
 import Field from './Field';
-import Event from '../utils/Event';
+import Observer from '../utils/Observer';
 
 import {
-  IFieldProps, IFieldViewProps, IGameProps, IPlayersInfo, IStrategy, PlayerProps,
+  IFieldProps, IFieldViewProps, IGameInfo, IGameProps, IPlayersInfo,
 } from '../@types/types';
 
 class Game implements IGameProps {
   constructor(
-    public playersList: PlayerProps,
-    public strategy: IStrategy,
-    public fieldSize: IFieldViewProps,
+    public gameInfo: IGameInfo,
     public field: IFieldProps = { size: { x: 1, y: 1 } },
     public players: IPlayersInfo[] = [],
-    public board: number[][] = [],
-    public turn = 0,
-    public currentPlayerIndex = 0,
-    public isFinished = false,
-    public winnerId = -1,
-    public updateCellEvent = new Event(),
-    public winEvent = new Event(),
+    private board: number[][] = [],
+    private turn = 0,
+    private currentPlayerIndex = 0,
+    private isFinished = false,
+    public updateCellEvent = new Observer(),
+    public winEvent = new Observer(),
   ) {
-    this.players = this.strategy.setPlayerToken(playersList);
-    this.field = new Field(this.fieldSize);
-    this.board = this.strategy.init(this.field.size.x, this.field.size.y);
+    this.players = this.gameInfo.strategy.setPlayerToken(gameInfo.playersList);
+    this.field = new Field(this.gameInfo.fieldSize);
+    this.board = this.gameInfo.strategy.init(this.field.size.x, this.field.size.y);
   }
 
-  makeMove(data: any): void {
-    const { x, y } = data;
-    const isValid = this.strategy.isTurnValid(this.board, x, y);
+  makeMove({ x, y }: IFieldViewProps): void {
+    console.log(this);
+    
+    const isValid = this.gameInfo.strategy.isTurnValid(this.board, x, y);
 
-    if (isValid) {
-      if (!this.isFinished) {
-        this.strategy.setValue(this.board, x, y, this.currentPlayerIndex + 1);
-        this.updateCellEvent.trigger({ x, y, sign: this.players[this.currentPlayerIndex].sign });
-      }
+    if (!isValid) {
+      return;
+    }
 
-      const winnerId = this.strategy.checkWin(this.board);
-      const isDraw = this.strategy.checkDraw(this.board);
+    if (!this.isFinished) {
+      this.gameInfo.strategy.setValue(this.board, x, y, this.currentPlayerIndex);
+      this.updateCellEvent.trigger({ x, y, sign: this.players[this.currentPlayerIndex].sign });
+    }
 
-      if (winnerId > 0 || isDraw) {
-        this.winnerId = this.currentPlayerIndex + 1;
-        this.isFinished = true;
-        if (isDraw) this.winEvent.trigger('no one');
-        if (winnerId > 0) this.winEvent.trigger(this.players[this.currentPlayerIndex].name);
-        this.clearBoard();
-      } else this.updateTurnAndNextPlayer();
+    const isPlayerWin = this.gameInfo.strategy.checkWin(this.board);
+    const isCellsFulled = this.gameInfo.strategy.checkDraw(this.board);
+
+    if (isCellsFulled) this.winEvent.trigger('no one');
+    if (isPlayerWin) this.winEvent.trigger(this.players[this.currentPlayerIndex].name);
+
+    if (isPlayerWin || isCellsFulled) {
+      this.isFinished = true;
+      this.clearBoard();
+    } else {
+      this.updateTurnAndNextPlayer();
     }
   }
 
@@ -63,7 +65,6 @@ class Game implements IGameProps {
     this.isFinished = false;
     this.turn = 0;
     this.currentPlayerIndex = 0;
-    this.winnerId = -1;
   }
 }
 export default Game;

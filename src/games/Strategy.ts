@@ -3,7 +3,7 @@ import { IPlayersInfo, IStrategy } from '../@types/types';
 abstract class Strategy implements IStrategy {
   abstract getName(): string;
 
-  abstract checkWin(board: number[][]): number;
+  abstract checkWin(board: number[][]): boolean;
 
   abstract setPlayerToken(players: string[]): IPlayersInfo[];
 
@@ -15,20 +15,11 @@ abstract class Strategy implements IStrategy {
     return result;
   };
 
-  isTurnValid = (board: number[][], x: number, y: number): boolean => {
-    const value = board[x][y];
-    return value === 0;
-  };
+  isTurnValid = (board: number[][], x: number, y: number): boolean => board[x][y] === 0;
 
-  setValue = (board: number[][], x: number, y: number, playerId: number): void => {
-    const playerValue = board;
-    playerValue[x][y] = playerId + 1;
-  };
+  setValue = (board: number[][], x: number, y: number, playerId: number): void => { board[x][y] = playerId + 1 };
 
-  checkDraw = (board: number[][]): boolean => {
-    const draw = board.slice().flat().every((cell: number): boolean => cell !== 0);
-    return draw;
-  };
+  checkDraw = (board: number[][]): boolean => board.slice().flat().every((cell: number): boolean => cell !== 0);
 }
 
 export default Strategy;

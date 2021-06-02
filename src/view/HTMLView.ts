@@ -1,18 +1,19 @@
-import { IHTMLGameViewProps } from '../@types/types';
+import { IFieldViewProps, IUpdateData } from '../@types/types';
+
 import Game from '../model/Game';
 import FieldView from './FieldView';
 import PlayerView from './PlayerView';
 
-class HTMLView implements IHTMLGameViewProps {
+class HTMLView {
   constructor(
-    public game: Game,
-    public view = new FieldView(game.field.size.x, game.field.size.y),
-    public players = new PlayerView(),
+    private game: Game,
+    private view = new FieldView(game.field.size.x, game.field.size.y),
+    private players = new PlayerView(),
   ) {
-    this.view.playEvent.addListener((data) => this.game.makeMove(data));
+    this.view.playEvent.addListener(({ x, y }: IFieldViewProps) => this.game.makeMove({ x, y }));
     this.game.updateCellEvent
-      .addListener((data) => this.view.updateCell(data));
-    this.game.winEvent.addListener((winner: string): void => this.view.showWin(winner));
+      .addListener(({ x, y, sign }: IUpdateData) => this.view.updateCell({ x, y, sign }));
+    this.game.winEvent.addListener((winner: string) => this.view.showWin(winner));
   }
 
   render(idElement: string): void {

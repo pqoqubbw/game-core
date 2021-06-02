@@ -5,7 +5,7 @@ import { IPlayersInfo } from '../@types/types';
 class TicTacToe extends Strategy {
   getName = (): string => 'TicTacToe';
 
-  checkWin = (board: number[][]): number => {
+  checkWin = (board: number[][]): boolean => {
     const winCombinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -23,9 +23,9 @@ class TicTacToe extends Strategy {
       && cells[line[0]] === cells[line[1]]
       && cells[line[1]] === cells[line[2]]);
 
-    if (isWinCombinations) return 1;
+    if (isWinCombinations) return true;
 
-    return -1;
+    return false;
   };
 
   setPlayerToken = (players: string[]): IPlayersInfo[] => {
