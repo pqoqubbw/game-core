@@ -44,4 +44,5 @@ export interface IUpdateData {
 }
 export interface IFieldProps {
     size: IFieldViewProps;
+    board: number[][];
 }

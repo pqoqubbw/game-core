@@ -4,8 +4,9 @@ export default class Field implements IFieldProps {
         x: number;
         y: number;
     };
+    board: number[][];
     constructor(size: {
         x: number;
         y: number;
-    });
+    }, board?: number[][]);
 }

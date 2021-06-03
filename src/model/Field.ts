@@ -6,5 +6,6 @@ export default class Field implements IFieldProps {
       x: number,
       y: number
     },
+    public board: number[][] = [],
   ) { }
 }
