@@ -1,14 +1,14 @@
 import { IUpdateData } from '../@types/types';
 
-import Observer from '../utils/Observer';
+import Event from '../utils/Observer';
 
 class FieldView {
   constructor(
     private x: number,
     private y: number,
     private board = [] as HTMLElement[][],
-    public playEvent = new Observer(),
     private resultMessage = document.createElement('h2'),
+    public on = new Event(),
   ) { }
 
   private generateField(classTable: string): HTMLElement {
@@ -25,7 +25,7 @@ class FieldView {
         cell.id = `${(counter += 1)}`;
         cell.tabIndex = 1;
         cell.addEventListener('click', () => {
-          this.playEvent.trigger({ x: i, y: j });
+          this.on.trigger('move', { x: i, y: j });
         });
       }
     }

@@ -1,17 +1,22 @@
-import { IFieldViewProps } from '../@types/types';
+import { callbackFunc, IEvents } from '../@types/types';
 
-class Observer {
-  constructor(
-    private listeners: Array<(parametr: IFieldViewProps | string) => void> = [],
-  ) { }
+class Event {
 
-  addListener(listener: (param: any) => void): void {
-    this.listeners.push(listener);
+  constructor(public events: IEvents = {}) { }
+
+  subscribe(eventName: string, fn: callbackFunc): void {
+    this.events[eventName] = this.events[eventName] || [];
+    this.events[eventName].push(fn);
   }
 
-  trigger(data: any): void {
-    this.listeners.forEach((listener): void => listener(data))
+  trigger(eventName: string, data: any): void {
+
+    if (this.events[eventName]) {
+      this.events[eventName].forEach((fn: callbackFunc) => {
+        fn(data);
+      });
+    }
   }
 }
 
-export default Observer;
+export default Event;

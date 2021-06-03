@@ -1,12 +1,12 @@
 import { IUpdateData } from '../@types/types';
-import Observer from '../utils/Observer';
+import Event from '../utils/Observer';
 declare class FieldView {
     private x;
     private y;
     private board;
-    playEvent: Observer;
     private resultMessage;
-    constructor(x: number, y: number, board?: HTMLElement[][], playEvent?: Observer, resultMessage?: HTMLHeadingElement);
+    on: Event;
+    constructor(x: number, y: number, board?: HTMLElement[][], resultMessage?: HTMLHeadingElement, on?: Event);
     private generateField;
     updateCell: ({ x, y, sign }: IUpdateData) => void;
     renderField(idElement: string, classTable: string): void;

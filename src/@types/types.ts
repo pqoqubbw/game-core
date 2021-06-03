@@ -19,7 +19,7 @@ export interface IStrategy {
   init(x: number, y: number): number[][],
   isTurnValid(board: number[][], x: number, y: number): boolean,
   setValue(board: number[][], x: number, y: number, playerId: number): void,
-  checkDraw(board: number[][]): boolean,
+  checkFullCells(board: number[][]): boolean,
 }
 
 export interface IHTMLGameViewProps {
@@ -57,3 +57,10 @@ export interface IFieldProps {
   board: number[][],
 }
 
+export interface callbackFunc {
+  (data: any): any;
+}
+
+export interface IEvents {
+  [key: string]: Array<(data?: any) => void>,
+}

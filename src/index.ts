@@ -8,6 +8,5 @@ const game = new Game({
   fieldSize: { x: 3, y: 3 },
 });
 
-
 const HTMLViewGame = new HTMLView(game);
 HTMLViewGame.render('.main');
