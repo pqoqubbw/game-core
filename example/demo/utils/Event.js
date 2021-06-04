@@ -1,5 +1,4 @@
 class Event {
-    events;
     constructor(events = {}) {
         this.events = events;
     }

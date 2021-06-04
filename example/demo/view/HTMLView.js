@@ -2,10 +2,6 @@ import Event from '../utils/Event.js';
 import FieldView from './FieldView.js';
 import PlayerView from './PlayerView.js';
 class HTMLView {
-    game;
-    view;
-    players;
-    on;
     constructor(game, view = new FieldView(game.field.size.x, game.field.size.y), players = new PlayerView(), on = new Event()) {
         this.game = game;
         this.view = view;

@@ -1,13 +1,6 @@
 import Field from './Field.js';
 import Event from '../utils/Event.js';
 class Game {
-    gameInfo;
-    field;
-    players;
-    turn;
-    currentPlayerIndex;
-    isFinished;
-    on;
     constructor(gameInfo, field = { size: { x: 1, y: 1 }, board: [] }, players = [], turn = 0, currentPlayerIndex = 0, isFinished = false, on = new Event()) {
         this.gameInfo = gameInfo;
         this.field = field;

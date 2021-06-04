@@ -1,16 +1,14 @@
 import Event from '../utils/Event.js';
 class FieldView {
-    x;
-    y;
-    board;
-    resultMessage;
-    on;
     constructor(x, y, board = [], resultMessage = document.createElement('h2'), on = new Event()) {
         this.x = x;
         this.y = y;
         this.board = board;
         this.resultMessage = resultMessage;
         this.on = on;
+        this.updateCell = ({ x, y, sign }) => {
+            this.board[x][y].innerHTML = sign;
+        };
     }
     generateField(classTable) {
         const tableEl = document.createElement('table');
@@ -31,9 +29,6 @@ class FieldView {
         }
         return tableEl;
     }
-    updateCell = ({ x, y, sign }) => {
-        this.board[x][y].innerHTML = sign;
-    };
     renderField(idElement, classTable) {
         const mainElem = document.querySelector(idElement);
         const field = this.generateField(classTable);
