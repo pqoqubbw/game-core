@@ -14,7 +14,7 @@ const options = {
 
 replace(options)
     .then(changedFiles => {
-        console.log('Modified files:', changedFiles.join(', '));
+        console.log('Modified files:', changedFiles);
     })
     .catch(error => {
         console.error('Error occurred:', error);
