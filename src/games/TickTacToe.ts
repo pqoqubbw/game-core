@@ -5,7 +5,7 @@ import Strategy from './Strategy';
 class TicTacToe extends Strategy {
   getName = (): string => 'TicTacToe';
 
-  checkWin = (board: number[][]): boolean => {
+  checkWin = (board: number[][] = []): boolean => {
     const winCombinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -17,7 +17,7 @@ class TicTacToe extends Strategy {
       [2, 4, 6],
     ];
 
-    const cells = board.slice().flat();
+    const cells = board?.slice().flat();
 
     const isWinCombinations = winCombinations.some((line) => cells[line[0]]
       && cells[line[0]] === cells[line[1]]
@@ -30,7 +30,7 @@ class TicTacToe extends Strategy {
 
   setPlayerToken = (players: string[]): IPlayersInfo[] => {
     const tokens = ['X', 'O'];
-    return players.slice().map(
+    return players?.slice().map(
       (player: string | IPlayersInfo, i: number): IPlayersInfo => {
         let currentPlayer = player;
         currentPlayer = { name: player, sign: tokens[i] } as IPlayersInfo;

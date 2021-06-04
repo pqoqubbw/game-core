@@ -1,16 +1,23 @@
 {
-    "compilerOptions": {
-      "target": "ESNext",
-      "module": "CommonJS",
-      "lib": ["ESNext", "dom"],
-      "declaration": true,
-      "outDir": "dist",
-      "strict": true,
-      "esModuleInterop": true
-    },
-    "exclude": [
-      "node_modules",
-      "dist",
-      "example/dist"
-    ]
-  }
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [
+      "ESNext",
+      "dom"
+    ],
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "noEmitOnError": true,
+    "pretty": true,
+    "removeComments": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "example"
+  ]
+}

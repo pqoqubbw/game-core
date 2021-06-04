@@ -1,6 +1,6 @@
 import { IUpdateData } from '../@types/types';
 
-import Event from '../utils/Observer';
+import Event from '../utils/Event';
 
 class FieldView {
   constructor(

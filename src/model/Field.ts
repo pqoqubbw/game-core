@@ -1,6 +1,6 @@
 import { IFieldProps } from '../@types/types';
 
-export default class Field implements IFieldProps {
+class Field implements IFieldProps {
   constructor(
     public size: {
       x: number,
@@ -9,3 +9,5 @@ export default class Field implements IFieldProps {
     public board: number[][] = [],
   ) { }
 }
+
+export default Field;

@@ -3,7 +3,7 @@ import {
 } from '../@types/types';
 
 import Field from './Field';
-import Event from '../utils/Observer';
+import Event from '../utils/Event';
 
 class Game implements IGameProps {
   constructor(
@@ -21,9 +21,6 @@ class Game implements IGameProps {
   }
 
   makeMove({ x, y }: IFieldViewProps): void {
-
-    console.log(this);
-
     const isValid = this.gameInfo.strategy.isTurnValid(this.field.board, x, y);
 
     if (!isValid) {
@@ -38,7 +35,7 @@ class Game implements IGameProps {
     const isPlayerWin = this.gameInfo.strategy.checkWin(this.field.board);
     const isCellsFulled = this.gameInfo.strategy.checkFullCells(this.field.board);
 
-    if (isCellsFulled) this.on.trigger('draw', 'no one');
+    if (isCellsFulled) this.on.trigger('draw', 'no ones');
     if (isPlayerWin) this.on.trigger('win', this.players[this.currentPlayerIndex].name);
 
     if (isPlayerWin || isCellsFulled) {

@@ -1,7 +1,7 @@
 import { IFieldViewProps, IUpdateData } from '../@types/types';
 
 import Game from '../model/Game';
-import Event from '../utils/Observer';
+import Event from '../utils/Event';
 import FieldView from './FieldView';
 import PlayerView from './PlayerView';
 
@@ -12,16 +12,10 @@ class HTMLView {
     private players = new PlayerView(),
     public on = new Event(),
   ) {
-    // this.view.playEvent.addListener(({ x, y }: IFieldViewProps) => this.game.makeMove({ x, y }));
-    // this.game.updateCellEvent
-    //   .addListener(({ x, y, sign }: IUpdateData) => this.view.updateCell({ x, y, sign }));
-    // this.game.winEvent.addListener((winner: string) => this.view.showWin(winner));
-
     this.view.on.subscribe('move', ({ x, y }: IFieldViewProps) => this.game.makeMove({ x, y }))
     this.game.on.subscribe('update', ({ x, y, sign }: IUpdateData) => this.view.updateCell({ x, y, sign }))
     this.game.on.subscribe('win', (winner: string) => this.view.showWin(winner))
     this.game.on.subscribe('draw', (winner: string) => this.view.showWin(winner))
-
   }
 
   render(idElement: string): void {
