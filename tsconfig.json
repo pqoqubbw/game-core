@@ -15,6 +15,7 @@
     "removeComments": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    "moduleResolution": "Node",
   },
   "exclude": [
     "node_modules",
