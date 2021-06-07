@@ -8,7 +8,7 @@
     "dev": "tsc --watch",
     "build": "tsc --build tsconfig.json",
     "run-example": "tsc --build tsconfig.json && npx copyfiles --up 1 --all dist/**/* example/demo && node convert.js",
-    "postinstall" : "tsc --build tsconfig.json"
+    "preinstall" : "tsc --build tsconfig.json"
   },
   "license": "ISC",
   "devDependencies": {
