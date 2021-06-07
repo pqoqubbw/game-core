@@ -8,7 +8,7 @@
     "dev": "tsc --watch",
     "build": "tsc --build tsconfig.json",
     "run-example": "npm run build && npx copyfiles --up 1 --all dist/**/* example/demo && node convert.js",
-    "postinstall": "npm install && tsc --build tsconfig.json"
+    "postinstall": "tsc --build tsconfig.json"
   },
   "license": "ISC",
   "devDependencies": {
@@ -20,6 +20,9 @@
     "replace-in-file": "^6.2.0",
     "typescript": "^4.3.2"
   },
-  "files": ["/dist/**/*"],
+  "files": [
+    "/dist/**/*",
+    "tsconfig.json"
+  ],
   "dependencies": {}
 }
