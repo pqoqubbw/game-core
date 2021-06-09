@@ -30,7 +30,6 @@ class Game {
             this.on.trigger('win', this.players[this.currentPlayerIndex].name);
         if (isPlayerWin || isCellsFulled) {
             this.isFinished = true;
-            this.clearBoard();
         }
         else {
             this.updateTurnAndNextPlayer();

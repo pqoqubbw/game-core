@@ -40,7 +40,6 @@ class Game implements IGameProps {
 
     if (isPlayerWin || isCellsFulled) {
       this.isFinished = true;
-      this.clearBoard();
     } else {
       this.updateTurnAndNextPlayer();
     }

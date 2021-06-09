@@ -45,7 +45,6 @@ class FieldView {
     }
     showWin(winner) {
         this.resultMessage.innerHTML = `${winner} win`;
-        this.clearField();
     }
 }
 export default FieldView;

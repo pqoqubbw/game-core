@@ -21,6 +21,14 @@ class HTMLView {
   render(idElement: string): void {
     this.view.renderField(idElement, 'table-bordered');
     this.players.renderPlayer(this.game.players, '.main');
+
+    const buttonElement = document.createElement('button');
+    buttonElement.innerHTML = 'start new game';
+    buttonElement.onclick = () => {
+      this.view.clearField();
+      this.game.clearBoard();
+    }
+    document.body.appendChild(buttonElement);
   }
 }
 export default HTMLView;
