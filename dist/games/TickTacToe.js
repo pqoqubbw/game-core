@@ -28,6 +28,10 @@ class TicTacToe extends Strategy {
                 return currentPlayer;
             });
         };
+        this.setValue = (board, x, y, playerId) => {
+            board[x][y] = playerId + 1;
+        };
+        this.isTurnValid = (board, x, y, symbolThanTableFilled) => board[x][y] === symbolThanTableFilled;
     }
 }
 export default TicTacToe;

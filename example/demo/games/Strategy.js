@@ -7,10 +7,6 @@ class Strategy {
             }
             return result;
         };
-        this.isTurnValid = (board, x, y, symbolThanTableFilled) => board[x][y] === symbolThanTableFilled;
-        this.setValue = (board, x, y, playerId) => {
-            board[x][y] = playerId + 1;
-        };
         this.checkFullCells = (board, symbolThanTableFilled) => board
             .slice()
             .flat()

@@ -38,6 +38,17 @@ class TicTacToe extends Strategy {
       return currentPlayer;
     });
   };
+
+  setValue = (board: TableFilledSymbolType[][], x: number, y: number, playerId: number): void => {
+    board[x][y] = playerId + 1;
+  };
+
+  isTurnValid = (
+    board: TableFilledSymbolType[][],
+    x: number,
+    y: number,
+    symbolThanTableFilled: TableFilledSymbolType
+  ): boolean => board[x][y] === symbolThanTableFilled;
 }
 
 export default TicTacToe;
