@@ -15,9 +15,7 @@ class TicTacToe extends Strategy {
                 [2, 4, 6],
             ];
             const cells = board?.slice().flat();
-            const isWinCombinations = winCombinations.some((line) => cells[line[0]]
-                && cells[line[0]] === cells[line[1]]
-                && cells[line[1]] === cells[line[2]]);
+            const isWinCombinations = winCombinations.some((line) => cells[line[0]] && cells[line[0]] === cells[line[1]] && cells[line[1]] === cells[line[2]]);
             if (isWinCombinations)
                 return true;
             return false;

@@ -1,16 +1,16 @@
-import { IFieldProps, IFieldViewProps, IGameInfo, IGameProps, IPlayersInfo } from '../@types/types';
+import { IFieldProps, IFieldViewProps, IGameInfo, IGameProps, IPlayersInfo, TableFilledSymbolType } from '../@types/types';
 import Event from '../utils/Event';
 declare class Game implements IGameProps {
     gameInfo: IGameInfo;
     field: IFieldProps;
     players: IPlayersInfo[];
-    private turn;
-    private currentPlayerIndex;
-    private isFinished;
+    turn: number;
+    currentPlayerIndex: number;
+    isFinished: boolean;
     on: Event;
     constructor(gameInfo: IGameInfo, field?: IFieldProps, players?: IPlayersInfo[], turn?: number, currentPlayerIndex?: number, isFinished?: boolean, on?: Event);
     makeMove({ x, y }: IFieldViewProps): void;
     updateTurnAndNextPlayer(): void;
-    clearBoard(): void;
+    clearBoard(symbolThanTableFilled: TableFilledSymbolType): void;
 }
 export default Game;

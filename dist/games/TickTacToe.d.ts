@@ -1,8 +1,8 @@
-import { IPlayersInfo } from '../@types/types';
+import { IPlayersInfo, TableFilledSymbolType } from '../@types/types';
 import Strategy from './Strategy';
 declare class TicTacToe extends Strategy {
     getName: () => string;
-    checkWin: (board?: number[][]) => boolean;
+    checkWin: (board?: TableFilledSymbolType[][]) => boolean;
     setPlayerToken: (players: string[]) => IPlayersInfo[];
 }
 export default TicTacToe;

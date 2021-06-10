@@ -8,8 +8,8 @@ class FieldView {
     private y: number,
     private board = [] as HTMLElement[][],
     private resultMessage = document.createElement('h2'),
-    public on = new Event(),
-  ) { }
+    public on = new Event()
+  ) {}
 
   private generateField(classTable: string): HTMLElement {
     const tableEl = document.createElement('table');

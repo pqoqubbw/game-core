@@ -1,5 +1,10 @@
 import {
-  IFieldProps, IFieldViewProps, IGameInfo, IGameProps, IPlayersInfo,
+  IFieldProps,
+  IFieldViewProps,
+  IGameInfo,
+  IGameProps,
+  IPlayersInfo,
+  TableFilledSymbolType,
 } from '../@types/types';
 
 import Field from './Field';
@@ -10,30 +15,30 @@ class Game implements IGameProps {
     public gameInfo: IGameInfo,
     public field: IFieldProps = { size: { x: 1, y: 1 }, board: [] },
     public players: IPlayersInfo[] = [],
-    private turn = 0,
-    private currentPlayerIndex = 0,
-    private isFinished = false,
-    public on = new Event(),
+    public turn = 0,
+    public currentPlayerIndex = 0,
+    public isFinished = false,
+    public on = new Event()
   ) {
     this.players = this.gameInfo.strategy.setPlayerToken(gameInfo.playersList);
     this.field = new Field(this.gameInfo.fieldSize);
-    this.field.board = this.gameInfo.strategy.init(this.field.size.x, this.field.size.y);
+    this.field.board = this.gameInfo.strategy.init(this.field.size.x, this.field.size.y, 0);
   }
 
   makeMove({ x, y }: IFieldViewProps): void {
-    const isValid = this.gameInfo.strategy.isTurnValid(this.field.board, x, y);
+    const isValid = this.gameInfo.strategy.isTurnValid(this.field.board, x, y, 0);
 
     if (!isValid) {
       return;
     }
 
     if (!this.isFinished) {
-      this.on.trigger('update', { x, y, sign: this.players[this.currentPlayerIndex].sign })
+      this.on.trigger('update', { x, y, sign: this.players[this.currentPlayerIndex].sign });
       this.gameInfo.strategy.setValue(this.field.board, x, y, this.currentPlayerIndex);
     }
 
     const isPlayerWin = this.gameInfo.strategy.checkWin(this.field.board);
-    const isCellsFulled = this.gameInfo.strategy.checkFullCells(this.field.board);
+    const isCellsFulled = this.gameInfo.strategy.checkFullCells(this.field.board, 0);
 
     if (isCellsFulled) this.on.trigger('draw', 'no ones');
     if (isPlayerWin) this.on.trigger('win', this.players[this.currentPlayerIndex].name);
@@ -50,10 +55,10 @@ class Game implements IGameProps {
     this.turn += 1;
   }
 
-  clearBoard(): void {
+  clearBoard(symbolThanTableFilled: TableFilledSymbolType): void {
     for (let i = 0; i < this.field.size.x; i += 1) {
       for (let j = 0; j < this.field.size.y; j += 1) {
-        this.field.board[i][j] = 0;
+        this.field.board[i][j] = symbolThanTableFilled;
       }
     }
 

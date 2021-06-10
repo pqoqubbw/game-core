@@ -10,12 +10,14 @@ class HTMLView {
     private game: Game,
     private view = new FieldView(game.field.size.x, game.field.size.y),
     private players = new PlayerView(),
-    public on = new Event(),
+    public on = new Event()
   ) {
-    this.view.on.subscribe('move', ({ x, y }: IFieldViewProps) => this.game.makeMove({ x, y }))
-    this.game.on.subscribe('update', ({ x, y, sign }: IUpdateData) => this.view.updateCell({ x, y, sign }))
-    this.game.on.subscribe('win', (winner: string) => this.view.showWin(winner))
-    this.game.on.subscribe('draw', (winner: string) => this.view.showWin(winner))
+    this.view.on.subscribe('move', ({ x, y }: IFieldViewProps) => this.game.makeMove({ x, y }));
+    this.game.on.subscribe('update', ({ x, y, sign }: IUpdateData) =>
+      this.view.updateCell({ x, y, sign })
+    );
+    this.game.on.subscribe('win', (winner: string) => this.view.showWin(winner));
+    this.game.on.subscribe('draw', (winner: string) => this.view.showWin(winner));
   }
 
   render(idElement: string): void {
@@ -26,8 +28,8 @@ class HTMLView {
     buttonElement.innerHTML = 'start new game';
     buttonElement.onclick = () => {
       this.view.clearField();
-      this.game.clearBoard();
-    }
+      this.game.clearBoard(0);
+    };
     document.body.appendChild(buttonElement);
   }
 }

@@ -19,7 +19,7 @@ class HTMLView {
         buttonElement.innerHTML = 'start new game';
         buttonElement.onclick = () => {
             this.view.clearField();
-            this.game.clearBoard();
+            this.game.clearBoard(0);
         };
         document.body.appendChild(buttonElement);
     }

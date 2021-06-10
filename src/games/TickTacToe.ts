@@ -1,11 +1,11 @@
-import { IPlayersInfo } from '../@types/types';
+import { IPlayersInfo, TableFilledSymbolType } from '../@types/types';
 
 import Strategy from './Strategy';
 
 class TicTacToe extends Strategy {
   getName = (): string => 'TicTacToe';
 
-  checkWin = (board: number[][] = []): boolean => {
+  checkWin = (board: TableFilledSymbolType[][] = []): boolean => {
     const winCombinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -19,9 +19,10 @@ class TicTacToe extends Strategy {
 
     const cells = board?.slice().flat();
 
-    const isWinCombinations = winCombinations.some((line) => cells[line[0]]
-      && cells[line[0]] === cells[line[1]]
-      && cells[line[1]] === cells[line[2]]);
+    const isWinCombinations = winCombinations.some(
+      (line) =>
+        cells[line[0]] && cells[line[0]] === cells[line[1]] && cells[line[1]] === cells[line[2]]
+    );
 
     if (isWinCombinations) return true;
 
@@ -30,14 +31,12 @@ class TicTacToe extends Strategy {
 
   setPlayerToken = (players: string[]): IPlayersInfo[] => {
     const tokens = ['X', 'O'];
-    return players?.slice().map(
-      (player: string | IPlayersInfo, i: number): IPlayersInfo => {
-        let currentPlayer = player;
-        currentPlayer = { name: player, sign: tokens[i] } as IPlayersInfo;
+    return players?.slice().map((player: string | IPlayersInfo, i: number): IPlayersInfo => {
+      let currentPlayer = player;
+      currentPlayer = { name: player, sign: tokens[i] } as IPlayersInfo;
 
-        return currentPlayer;
-      },
-    );
+      return currentPlayer;
+    });
   };
 }
 

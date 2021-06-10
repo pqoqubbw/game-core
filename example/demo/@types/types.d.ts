@@ -4,6 +4,7 @@ export interface IGameProps {
         strategy: IStrategy;
         fieldSize: IFieldViewProps;
     };
+    clearBoard: (symbolThanTableFilled: TableFilledSymbolType) => void;
 }
 export interface IGameInfo {
     playersList: PlayerProps;
@@ -12,12 +13,12 @@ export interface IGameInfo {
 }
 export interface IStrategy {
     getName(): string;
-    checkWin(board: number[][]): boolean;
+    checkWin(board: TableFilledSymbolType[][]): boolean;
     setPlayerToken(players: string[]): IPlayersInfo[];
-    init(x: number, y: number): number[][];
-    isTurnValid(board: number[][], x: number, y: number): boolean;
-    setValue(board: number[][], x: number, y: number, playerId: number): void;
-    checkFullCells(board: number[][]): boolean;
+    init(x: number, y: number, symbolThanTableFilled: TableFilledSymbolType): TableFilledSymbolType[][];
+    isTurnValid(board: TableFilledSymbolType[][], x: number, y: number, symbolThanTableFilled: TableFilledSymbolType): boolean;
+    setValue(board: TableFilledSymbolType[][], x: number, y: number, playerId: number): void;
+    checkFullCells(board: TableFilledSymbolType[][], symbolThanTableFilled: TableFilledSymbolType): boolean;
 }
 export interface IHTMLGameViewProps {
     game: IGameProps;
@@ -44,7 +45,7 @@ export interface IUpdateData {
 }
 export interface IFieldProps {
     size: IFieldViewProps;
-    board: number[][];
+    board: TableFilledSymbolType[][];
 }
 export interface callbackFunc {
     (data: any): any;
@@ -52,3 +53,4 @@ export interface callbackFunc {
 export interface IEvents {
     [key: string]: Array<(data?: any) => void>;
 }
+export declare type TableFilledSymbolType = string | number | boolean | null;

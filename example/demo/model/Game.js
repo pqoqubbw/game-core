@@ -11,10 +11,10 @@ class Game {
         this.on = on;
         this.players = this.gameInfo.strategy.setPlayerToken(gameInfo.playersList);
         this.field = new Field(this.gameInfo.fieldSize);
-        this.field.board = this.gameInfo.strategy.init(this.field.size.x, this.field.size.y);
+        this.field.board = this.gameInfo.strategy.init(this.field.size.x, this.field.size.y, 0);
     }
     makeMove({ x, y }) {
-        const isValid = this.gameInfo.strategy.isTurnValid(this.field.board, x, y);
+        const isValid = this.gameInfo.strategy.isTurnValid(this.field.board, x, y, 0);
         if (!isValid) {
             return;
         }
@@ -23,7 +23,7 @@ class Game {
             this.gameInfo.strategy.setValue(this.field.board, x, y, this.currentPlayerIndex);
         }
         const isPlayerWin = this.gameInfo.strategy.checkWin(this.field.board);
-        const isCellsFulled = this.gameInfo.strategy.checkFullCells(this.field.board);
+        const isCellsFulled = this.gameInfo.strategy.checkFullCells(this.field.board, 0);
         if (isCellsFulled)
             this.on.trigger('draw', 'no ones');
         if (isPlayerWin)
@@ -39,10 +39,10 @@ class Game {
         this.currentPlayerIndex = (this.turn + 1) % this.players.length;
         this.turn += 1;
     }
-    clearBoard() {
+    clearBoard(symbolThanTableFilled) {
         for (let i = 0; i < this.field.size.x; i += 1) {
             for (let j = 0; j < this.field.size.y; j += 1) {
-                this.field.board[i][j] = 0;
+                this.field.board[i][j] = symbolThanTableFilled;
             }
         }
         this.isFinished = false;

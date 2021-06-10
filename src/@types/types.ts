@@ -1,60 +1,73 @@
 export interface IGameProps {
   gameInfo: {
-    playersList: PlayerProps,
-    strategy: IStrategy,
-    fieldSize: IFieldViewProps
-  },
+    playersList: PlayerProps;
+    strategy: IStrategy;
+    fieldSize: IFieldViewProps;
+  };
+  clearBoard: (symbolThanTableFilled: TableFilledSymbolType) => void;
 }
 
 export interface IGameInfo {
-  playersList: PlayerProps,
-  strategy: IStrategy,
-  fieldSize: IFieldViewProps
+  playersList: PlayerProps;
+  strategy: IStrategy;
+  fieldSize: IFieldViewProps;
 }
 
 export interface IStrategy {
-  getName(): string,
-  checkWin(board: number[][]): boolean,
-  setPlayerToken(players: string[]): IPlayersInfo[],
-  init(x: number, y: number): number[][],
-  isTurnValid(board: number[][], x: number, y: number): boolean,
-  setValue(board: number[][], x: number, y: number, playerId: number): void,
-  checkFullCells(board: number[][]): boolean,
+  getName(): string;
+  checkWin(board: TableFilledSymbolType[][]): boolean;
+  setPlayerToken(players: string[]): IPlayersInfo[];
+  init(
+    x: number,
+    y: number,
+    symbolThanTableFilled: TableFilledSymbolType
+  ): TableFilledSymbolType[][];
+  isTurnValid(
+    board: TableFilledSymbolType[][],
+    x: number,
+    y: number,
+    symbolThanTableFilled: TableFilledSymbolType
+  ): boolean;
+  setValue(board: TableFilledSymbolType[][], x: number, y: number, playerId: number): void;
+  checkFullCells(
+    board: TableFilledSymbolType[][],
+    symbolThanTableFilled: TableFilledSymbolType
+  ): boolean;
 }
 
 export interface IHTMLGameViewProps {
-  game: IGameProps,
+  game: IGameProps;
 }
 
 export type PlayerProps = string[];
 
 export interface IPlayerViewProps {
-  name: string[],
+  name: string[];
 }
 
 export interface IPlayersInfo {
-  name: string,
-  sign: string,
+  name: string;
+  sign: string;
 }
 
 export interface IPlayerProps {
-  name: string,
+  name: string;
 }
 
 export interface IFieldViewProps {
-  x: number,
-  y: number,
+  x: number;
+  y: number;
 }
 
 export interface IUpdateData {
-  x: number,
-  y: number,
-  sign: string
+  x: number;
+  y: number;
+  sign: string;
 }
 
 export interface IFieldProps {
-  size: IFieldViewProps,
-  board: number[][],
+  size: IFieldViewProps;
+  board: TableFilledSymbolType[][];
 }
 
 export interface callbackFunc {
@@ -62,5 +75,7 @@ export interface callbackFunc {
 }
 
 export interface IEvents {
-  [key: string]: Array<(data?: any) => void>,
+  [key: string]: Array<(data?: any) => void>;
 }
+
+export type TableFilledSymbolType = string | number | boolean | null;

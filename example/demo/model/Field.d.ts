@@ -1,13 +1,13 @@
-import { IFieldProps } from '../@types/types';
+import { IFieldProps, TableFilledSymbolType } from '../@types/types';
 declare class Field implements IFieldProps {
     size: {
         x: number;
         y: number;
     };
-    board: number[][];
+    board: TableFilledSymbolType[][];
     constructor(size: {
         x: number;
         y: number;
-    }, board?: number[][]);
+    }, board?: TableFilledSymbolType[][]);
 }
 export default Field;
