@@ -2,15 +2,15 @@ import Event from '../utils/Event.js';
 import FieldView from './FieldView.js';
 import PlayerView from './PlayerView.js';
 class HTMLView {
-    constructor(game, view = new FieldView(game.field.size.x, game.field.size.y), players = new PlayerView(), on = new Event()) {
+    constructor(game, view = new FieldView(game.field.size.x, game.field.size.y), players = new PlayerView(), event = new Event()) {
         this.game = game;
         this.view = view;
         this.players = players;
-        this.on = on;
-        this.view.on.subscribe('move', ({ x, y }) => this.game.makeMove({ x, y }));
-        this.game.on.subscribe('update', ({ x, y, sign }) => this.view.updateCell({ x, y, sign }));
-        this.game.on.subscribe('win', (winner) => this.view.showWin(winner));
-        this.game.on.subscribe('draw', (winner) => this.view.showWin(winner));
+        this.event = event;
+        this.view.event.subscribe('move', ({ x, y }) => this.game.makeMove({ x, y }));
+        this.game.event.subscribe('update', ({ x, y, sign }) => this.view.updateCell({ x, y, sign }));
+        this.game.event.subscribe('win', (winner) => this.view.showWin(winner));
+        this.game.event.subscribe('draw', (winner) => this.view.showWin(winner));
     }
     render(idElement) {
         this.view.renderField(idElement, 'table-bordered');

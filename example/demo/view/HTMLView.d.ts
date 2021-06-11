@@ -6,8 +6,8 @@ declare class HTMLView {
     private game;
     private view;
     private players;
-    on: Event;
-    constructor(game: Game, view?: FieldView, players?: PlayerView, on?: Event);
+    event: Event;
+    constructor(game: Game, view?: FieldView, players?: PlayerView, event?: Event);
     render(idElement: string): void;
 }
 export default HTMLView;

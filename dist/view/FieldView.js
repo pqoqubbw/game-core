@@ -1,11 +1,11 @@
 import Event from '../utils/Event';
 class FieldView {
-    constructor(x, y, board = [], resultMessage = document.createElement('h2'), on = new Event()) {
+    constructor(x, y, board = [], resultMessage = document.createElement('h2'), event = new Event()) {
         this.x = x;
         this.y = y;
         this.board = board;
         this.resultMessage = resultMessage;
-        this.on = on;
+        this.event = event;
         this.updateCell = ({ x, y, sign }) => {
             this.board[x][y].innerHTML = sign;
         };
@@ -23,7 +23,7 @@ class FieldView {
                 cell.id = `${(counter += 1)}`;
                 cell.tabIndex = 1;
                 cell.addEventListener('click', () => {
-                    this.on.trigger('move', { x: i, y: j });
+                    this.event.trigger('move', { x: i, y: j });
                 });
             }
         }

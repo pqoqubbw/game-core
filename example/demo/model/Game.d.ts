@@ -7,8 +7,8 @@ declare class Game implements IGameProps {
     turn: number;
     currentPlayerIndex: number;
     isFinished: boolean;
-    on: Event;
-    constructor(gameInfo: IGameInfo, field?: IFieldProps, players?: IPlayersInfo[], turn?: number, currentPlayerIndex?: number, isFinished?: boolean, on?: Event);
+    event: Event;
+    constructor(gameInfo: IGameInfo, field?: IFieldProps, players?: IPlayersInfo[], turn?: number, currentPlayerIndex?: number, isFinished?: boolean, event?: Event);
     makeMove({ x, y }: IFieldViewProps): void;
     updateTurnAndNextPlayer(): void;
     clearBoard(symbolThanTableFilled: TableFilledSymbolType): void;

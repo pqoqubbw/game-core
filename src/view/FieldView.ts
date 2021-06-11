@@ -8,7 +8,7 @@ class FieldView {
     private y: number,
     private board = [] as HTMLElement[][],
     private resultMessage = document.createElement('h2'),
-    public on = new Event()
+    public event = new Event()
   ) {}
 
   private generateField(classTable: string): HTMLElement {
@@ -25,7 +25,7 @@ class FieldView {
         cell.id = `${(counter += 1)}`;
         cell.tabIndex = 1;
         cell.addEventListener('click', () => {
-          this.on.trigger('move', { x: i, y: j });
+          this.event.trigger('move', { x: i, y: j });
         });
       }
     }

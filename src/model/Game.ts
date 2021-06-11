@@ -18,7 +18,7 @@ class Game implements IGameProps {
     public turn = 0,
     public currentPlayerIndex = 0,
     public isFinished = false,
-    public on = new Event()
+    public event = new Event()
   ) {
     this.players = this.gameInfo.strategy.setPlayerToken(gameInfo.playersList);
     this.field = new Field(this.gameInfo.fieldSize);
@@ -33,15 +33,15 @@ class Game implements IGameProps {
     }
 
     if (!this.isFinished) {
-      this.on.trigger('update', { x, y, sign: this.players[this.currentPlayerIndex].sign });
+      this.event.trigger('update', { x, y, sign: this.players[this.currentPlayerIndex].sign });
       this.gameInfo.strategy.setValue(this.field.board, x, y, this.currentPlayerIndex);
     }
 
     const isPlayerWin = this.gameInfo.strategy.checkWin(this.field.board);
     const isCellsFulled = this.gameInfo.strategy.checkFullCells(this.field.board, 0);
 
-    if (isCellsFulled) this.on.trigger('draw', 'no ones');
-    if (isPlayerWin) this.on.trigger('win', this.players[this.currentPlayerIndex].name);
+    if (isCellsFulled) this.event.trigger('draw', 'no ones');
+    if (isPlayerWin) this.event.trigger('win', this.players[this.currentPlayerIndex].name);
 
     if (isPlayerWin || isCellsFulled) {
       this.isFinished = true;

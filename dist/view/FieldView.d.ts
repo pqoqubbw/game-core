@@ -5,8 +5,8 @@ declare class FieldView {
     private y;
     private board;
     private resultMessage;
-    on: Event;
-    constructor(x: number, y: number, board?: HTMLElement[][], resultMessage?: HTMLHeadingElement, on?: Event);
+    event: Event;
+    constructor(x: number, y: number, board?: HTMLElement[][], resultMessage?: HTMLHeadingElement, event?: Event);
     private generateField;
     updateCell: ({ x, y, sign }: IUpdateData) => void;
     renderField(idElement: string, classTable: string): void;
